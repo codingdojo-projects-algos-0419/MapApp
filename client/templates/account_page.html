@@ -1,0 +1,52 @@
+{% extends './layout.html' %}
+{% block title %}Account Page{% endblock %}
+{% block body %}
+<div class="wrapper">
+  {% if 'user_id' in session %}
+    <div class='header'>
+      <h2>Welcome {{user['username']}}!</h2>
+      <div class="header_right">
+        <a href="{{url_for('dashboard')}}">Back</a>  |
+        <a href="{{url_for('users:logout')}}">Logout</a>
+      </div><br>
+    </div>
+  {% else %}
+    <div class='header'>
+      <div class="header_right">
+        <a href="{{url_for('dashboard')}}">Back</a>  |
+        <a href="{{url_for('users:login')}}">Login</a>
+      </div><br>      
+    </div>
+  {% endif %}
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <ul class="flashes">
+        {% for message in messages %}
+          <li class="error">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+  <div class='edit_form'>
+    {% if current_user.id == user.id or current_user.admin_lvl == 2 %}
+      <h5>Edit login/username</h5>
+      <form action="editing" method="post">
+        <label for="username">Username</label>
+        <input type="text" name="username" value="{{user['username']}}" required><br>
+        <input type="submit" value="Update">
+      </form>
+    {% endif %}
+  </div>
+  <div class="gallery">
+      <h2>Locations you have liked</h2>
+      <div class="liked_location_list">
+          {% for post in user.locations_this_user_likes %}
+              <div class="gallery_post">
+                  <a href="{{url_for('locations:view_location', location_id=location.id)}}">
+                  {{location['name']}}</a>
+              </div>
+          {% endfor %}
+      </div>
+  </div>
+</div>
+{% endblock %}

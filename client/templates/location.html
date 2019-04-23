@@ -1,0 +1,44 @@
+{% extends './layout.html' %}
+{% block title %}{{location['name']}}{% endblock %}
+{% block body %}
+<div class="wrapper">
+    {% if 'user_id' in session %}
+        <div class='header'>
+            <h2>Welcome {{user['username']}}!</h2>
+            <div class="header_right">
+                <p>
+                    {% if user['admin_lvl'] == 2 %}
+                    <a href="{{url_for('admin_page')}}">Admin Page</a>  |
+                    {% endif %}
+                    <a href="{{url_for('dashboard')}}">Back</a>  |
+                    <a href="{{ url_for('users:account_page', user_id=user['id'])}}">My Account</a>  |
+                    <a href="{{url_for('users:logout')}}">Logout</a>
+                </p>
+            </div><br>
+        </div>
+        {% else %}
+            <div class='header'>
+                <h2>Welcome To Mapapp!</h2>
+                <div class="header_right">
+                    <a href="{{url_for('dashboard')}}">Back</a>  |
+                    <a href="{{url_for('users:login_and_registration')}}">Login or make a new account</a>
+                </div><br>      
+            </div>
+    {% endif %}
+    <div class="main">
+        <div class="location">
+            <h2>{{location['name']}}</h2>
+            <h5>{{location['description']}}</h5>
+            {% if 'user_id' in session %}
+                {% if post in user.posts_this_user_likes %}
+                    <a href="{{url_for('posts:remove_like', post_id=post.id)}}" class="button">Unlike</a></td>
+                {% else %}
+                    <a href="{{url_for('posts:like', post_id=post.id)}}" class="button">Like</a></td>
+                {% endif %}
+            {% endif %}
+            </p>
+        </div>
+    </div>  
+</div>
+
+{% endblock %}
