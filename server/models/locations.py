@@ -1,7 +1,6 @@
 from sqlalchemy.sql import func
 from config import db
 from server.models.likes_table import likes_table
-from server.models.comments_table import Comment
 
 class Location(db.Model):
     __tablename__ = 'locations'
