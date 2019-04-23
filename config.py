@@ -10,7 +10,7 @@ app = Flask(__name__)
 bcrypt=Bcrypt(app)
 app.secret_key="\x88N\xf5]\xf8\xe9\xf4\xcc#\x11\xf4\x9dz\x1f3"
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///QuindittyArt.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Mapapp.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 ROOT_DIR = os.path.dirname(__file__)

@@ -21,7 +21,7 @@
     {% endif %}
   {% endwith %}
   <div class='edit_form'>
-    {% if current_user.id == user.id or current_user.admin_lvl == 2 %}
+    {% if current_user.id == user.id %}
       <h5>Edit login/username</h5>
       <form action="editing" method="post">
         <label for="username">Username</label>
