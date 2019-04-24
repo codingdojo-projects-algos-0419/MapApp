@@ -14,12 +14,13 @@
         </div>
         {% else %}
             <div class='header'>
-                <h2>Welcome To Mapapp! Hola Mundo!</h2>
+                <h2>Welcome To Mapapp!</h2>
                 <div class="header_right">
                     <a href="{{url_for('users:login_and_registration')}}">Login or make a new account</a>
                 </div><br>      
             </div>
     {% endif %}
+    <div id="map"></div>
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             <ul class="flashes">
