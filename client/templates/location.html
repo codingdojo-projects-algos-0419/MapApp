@@ -31,9 +31,9 @@
             <h5>{{location['description']}}</h5>
             {% if 'user_id' in session %}
                 {% if post in user.posts_this_user_likes %}
-                    <a href="{{url_for('posts:remove_like', post_id=post.id)}}" class="button">Unlike</a></td>
+                    <a href="{{url_for('locations:remove_like', post_id=post.id)}}" class="button">Unlike</a></td>
                 {% else %}
-                    <a href="{{url_for('posts:like', post_id=post.id)}}" class="button">Like</a></td>
+                    <a href="{{url_for('locations:like', post_id=post.id)}}" class="button">Like</a></td>
                 {% endif %}
             {% endif %}
             </p>
