@@ -8,4 +8,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
         accessToken: 'pk.eyJ1IjoibXdpbHR6aXVzIiwiYSI6ImNqdXVjZTFjazBoYzY0M243OTZ1ZWx6YWMifQ.7iYMruXZbUR_2DWQpULrMg'
     }).addTo(map);
 
+    L.Routing.control({
+        waypoints: [
+            L.latLng(57.75, 11.94),
+            L.latLng(57.6792,11.949)
+        ]
+    }).addTo(map)
+
 })
