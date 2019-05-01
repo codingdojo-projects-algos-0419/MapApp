@@ -3,3 +3,16 @@
     height: calc(100vh - 100px);
     border-top: 1px solid black;
 }
+
+.leaflet-routing-geocoder input{
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.leaflet-routing-geocoder input:focus{
+    box-shadow: 0 0 5px 2px skyblue;
+}
+
+.leaflet-routing-add-waypoint{
+    padding: 1px 5px 1px 6px;
+}
