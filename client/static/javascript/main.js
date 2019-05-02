@@ -27,4 +27,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
         geocoder: L.Control.Geocoder.nominatim()
     }).addTo(map);
 
+    $('.leaflet-routing-geocoder:nth-child(2)').after('<p class="adder">Add to My Destinations</p>')
+
+    $('.adder').on('click', function(){
+        var destination = $(this).prev().children('input')
+        destination.attr('name', 'destination')
+        if (destination.val()) {
+            
+            $.ajax({
+                url: '/add_destination',
+                method: 'POST',
+                data: destination.serialize()
+            })
+
+        }
+    })
+
 })

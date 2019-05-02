@@ -16,3 +16,10 @@
 .leaflet-routing-add-waypoint{
     padding: 1px 5px 1px 6px;
 }
+
+.adder{
+    text-align: right;
+    margin-right: 5px;
+    color: blue;
+    cursor: pointer;
+}
