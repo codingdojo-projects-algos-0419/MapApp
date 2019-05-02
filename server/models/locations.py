@@ -8,8 +8,7 @@ class Location(db.Model):
     user_id = db.Column(
         db.Integer, db.ForeignKey("users.id"), nullable=False
     )
-    Name = db.Column(db.String(255), nullable=False)
-    Description = db.Column(db.Text, nullable=False)
+    address = db.Column(db.String(255), nullable=False)
     created_at = db.Column(
         db.DateTime, server_default=func.now()
     )
@@ -44,14 +43,10 @@ class Location(db.Model):
             errors.append("Name cannot exceed 255 characters in length.")
         if len(form['name']) <= 2:
             errors.append("Name mush consist of at least 2 characters.")
-        if len(form['description']) > 500:
-            errors.append("Description cannot exceed 500 characters in length.")
-        if len(form['description']) < 3:
-            errors.append("Description mush consist of at least 3 characters.")
         return errors
 
     @classmethod
     def create(cls, form, filename, user_id):
-        post = cls(title=form['name'], text_content=form['description'], user_id=user_id)
+        post = cls(title=form['name'], user_id=user_id)
         db.session.add(post)
         db.session.commit()

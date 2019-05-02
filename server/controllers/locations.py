@@ -16,10 +16,10 @@ def view_location(location_id):
 
 def like(location_id):
         user = User.query.get(session['user_id'])
-        Location = Location.query.get(location_id)
+        location = Location.query.get(location_id)
         location.users_who_like_this_location.append(user)
         db.session.commit()
-        return redirect(url_for('locations:view_post', location_id=location_id))
+        return redirect(url_for('users:account_page', user_id=user.id))
 
 def remove_like(location_id):
         user = User.query.get(session['user_id'])

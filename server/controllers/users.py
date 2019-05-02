@@ -33,7 +33,8 @@ def account_page(user_id):
     current_user = User.query.get(session['user_id'])
     user = User.query.get(user_id)
     if current_user.id == user.id:
-        return render_template('account_page.html', current_user=current_user, user=user)
+        locations = Location.query.filter_by(user_id=current_user.id)
+        return render_template('account_page.html', current_user=current_user, user=user, locations=locations)
     return redirect(url_for('dashboard'))
 
 def editing(user_id):

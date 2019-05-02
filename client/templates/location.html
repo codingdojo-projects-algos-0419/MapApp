@@ -35,6 +35,11 @@
             {% endif %}
             </p>
         </div>
+        <div class="locations">
+            {% for location in locations %}
+                <p class="location">{{location.address}}</p>
+            {% endfor %}
+        </div>
     </div>  
 </div>
 
