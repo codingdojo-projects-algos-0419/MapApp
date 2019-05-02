@@ -27,3 +27,11 @@ def remove_like(location_id):
         location.users_who_like_this_location.remove(user)
         db.session.commit()
         return redirect(url_for('locations:view_location', location_id=location_id))
+
+
+def add_destination():
+        if 'userid' in session:
+                destination = Location(user_id=session['userid'], Name=request.form['destination'], Description="default description")
+                db.session.add(destination)
+                db.session.commit()
+        return "success"
