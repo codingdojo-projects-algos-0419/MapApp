@@ -33,11 +33,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
         var destination = $(this).prev().children('input')
         destination.attr('name', 'destination')
         if (destination.val()) {
-            
+
             $.ajax({
                 url: '/add_destination',
                 method: 'POST',
-                data: destination.serialize()
+                data: destination.serialize(),
             })
 
         }

@@ -30,8 +30,8 @@ def remove_like(location_id):
 
 
 def add_destination():
-        if 'userid' in session:
-                destination = Location(user_id=session['userid'], Name=request.form['destination'], Description="default description")
+        if 'user_id' in session:
+                destination = Location(user_id=session['user_id'], address=request.form['destination'])
                 db.session.add(destination)
                 db.session.commit()
         return "success"
