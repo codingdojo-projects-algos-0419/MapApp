@@ -34,4 +34,4 @@ def add_destination():
                 destination = Location(user_id=session['user_id'], address=request.form['destination'])
                 db.session.add(destination)
                 db.session.commit()
-        return "success"
+        return redirect(url_for('dashboard'))
