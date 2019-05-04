@@ -33,14 +33,12 @@
   <div class="location_list">
     <h2>Location list</h2>
     {% for location in locations %}
-      <div class="location">
-        <p>{{location.address}}</p>
-        {% if location in user.locations_this_user_likes %}
-         <a href="{{url_for('locations:remove_like', location_id=location.id)}}" class='button'>Unlike</a>
-        {% else %}
-          <a href="{{url_for('locations:like', location_id=location.id)}}" class="button">like</a>
-        {% endif %}
-      </div>
+      {% if location not in user.locations_this_user_likes %}
+        <div class="location">
+          <p>{{location.address}}</p>
+          <a href="{{url_for('locations:remove_like', location_id=location.id)}}" class='button'>Unlike</a>
+        </div>
+      {% endif %}
     {% endfor %}
   </div>
   <div class="liked_location_list">
