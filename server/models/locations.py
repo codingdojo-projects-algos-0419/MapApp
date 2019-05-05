@@ -1,4 +1,5 @@
 from sqlalchemy.sql import func
+from flask import session
 from config import db
 from server.models.likes_table import likes_table
 
@@ -37,16 +38,19 @@ class Location(db.Model):
         return likes
 
     @classmethod
-    def validate(cls, form, filename):
+    def validate(cls, form):
         errors = []
-        if len(form['name']) > 255:
+        existing_location = cls.query.filter_by(address=form['destination']).filter_by(user_id=session['user_id']).first()
+        if existing_location:
+            errors.append("Address already saved.")
+        if len(form['destination']) > 255:
             errors.append("Name cannot exceed 255 characters in length.")
-        if len(form['name']) <= 2:
+        if len(form['destination']) <= 2:
             errors.append("Name mush consist of at least 2 characters.")
         return errors
 
     @classmethod
-    def create(cls, form, filename, user_id):
+    def create(cls, form, user_id):
         post = cls(title=form['name'], user_id=user_id)
         db.session.add(post)
         db.session.commit()
