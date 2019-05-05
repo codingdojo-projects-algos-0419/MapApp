@@ -28,6 +28,11 @@ def remove_like(location_id):
         db.session.commit()
         return redirect(url_for('users:account_page', user_id=user.id))
 
+def route(id):
+        destination = Location.query.get(id)
+        session['destination'] = destination.address
+        return redirect(url_for('dashboard'))
+
 
 def add_destination():
         if 'user_id' in session:

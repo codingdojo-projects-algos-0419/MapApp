@@ -42,6 +42,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     })
 
-})
+    if($('#hidden').length) {
+        $('.adder').prev().children('input').val($('#hidden').val())
+    }
 
-// mapbox://styles/mwiltzius/cjuucw1uo1qpo1frs2vldzv8r
+})
