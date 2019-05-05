@@ -8,5 +8,12 @@ def dashboard():
     locations = Location.query.all()
     if 'user_id' in session:
         user = User.query.get(session['user_id'])
-        return render_template('dashboard.html', user=user)
-    return render_template('dashboard.html', )
+        if 'destination' in session:
+            destination = session['destination']
+            session.pop('destination')
+        else:
+            destination = ""
+        print(destination)
+        return render_template('dashboard.html', user=user, destination=destination)
+
+    return render_template('dashboard.html')

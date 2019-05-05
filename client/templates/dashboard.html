@@ -31,4 +31,7 @@
     {% endwith %}
     <div id="map"></div>
 </div>
+{% if destination %}
+    <input id="hidden" type="hidden" name="hidden" value="{{destination}}">
+{% endif %}
 {% endblock %}
