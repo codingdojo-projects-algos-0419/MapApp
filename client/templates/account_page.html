@@ -36,7 +36,7 @@
       {% if location not in user.locations_this_user_likes %}
         <div class="location">
           <p>{{location.address}}</p>
-          <a href="{{url_for('locations:like', location_id=location.id)}}" class='button'>Like</a>
+          <a href="{{url_for('locations:like', location_id=location.id)}}" class='button'>Favorite</a>
           <a href="{{url_for('locations:remove_destination', location_id=location.id)}}" class="button">Remove</a>
         </div>
       {% endif %}
