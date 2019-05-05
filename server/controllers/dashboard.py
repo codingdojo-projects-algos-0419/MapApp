@@ -9,4 +9,4 @@ def dashboard():
     if 'user_id' in session:
         user = User.query.get(session['user_id'])
         return render_template('dashboard.html', user=user)
-    return render_template('dashboard.html', )
+    return render_template('dashboard.html')

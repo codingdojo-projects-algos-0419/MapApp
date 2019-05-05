@@ -32,11 +32,12 @@ class User(db.Model):
             errors.append("Username already in use.")
         if len(form['username']) < 2:
             errors.append("Username must be at least 2 characters long.")
-        if len(form['username']) < 2:
-            errors.append("Username must be at least 2 characters long.")
+        if len(form['username']) > 255:
+            errors.append("Username must be less than 255 characters long.")
         if len(form['password']) < 8:
             errors.append("Password must be at least 8 characters long.")
-        
+        if len(form['password']) > 255:
+            errors.append("Password must be less than 255 characters long.")
         if form['password'] != form['confirm']:
             errors.append('Passwords must match')
 

@@ -45,8 +45,8 @@ class Location(db.Model):
             errors.append("Address already saved.")
         if len(form['destination']) > 255:
             errors.append("Name cannot exceed 255 characters in length.")
-        if len(form['destination']) <= 2:
-            errors.append("Name mush consist of at least 2 characters.")
+        if len(form['destination']) <= 4:
+            errors.append("Name mush consist of at least 4 characters.")
         return errors
 
     @classmethod
