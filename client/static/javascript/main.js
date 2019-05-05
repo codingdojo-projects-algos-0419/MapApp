@@ -47,5 +47,3 @@ document.addEventListener("DOMContentLoaded", function(event) {
     }
 
 })
-
-// mapbox://styles/mwiltzius/cjuucw1uo1qpo1frs2vldzv8r
