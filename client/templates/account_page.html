@@ -31,25 +31,25 @@
     {% endif %}
   </div>
   <div class="location_list">
-    <h2>Location list</h2>
+    <h2>My Desitinations</h2>
     {% for location in locations %}
       <div class="location">
         <p>{{location.address}}</p>
         {% if location in user.locations_this_user_likes %}
-         <a href="{{url_for('locations:remove_like', location_id=location.id)}}" class='button'>Unlike</a>
+         <a href="{{url_for('locations:remove_like', location_id=location.id)}}" class='button'>Remove Favorite</a>
         {% else %}
-          <a href="{{url_for('locations:like', location_id=location.id)}}" class="button">like</a>
+          <a href="{{url_for('locations:like', location_id=location.id)}}" class="button">Favorite</a>
         {% endif %}
       </div>
     {% endfor %}
   </div>
   <div class="liked_location_list">
-    <h2>Locations you have liked</h2>
+    <h2>Favorite Desitinations</h2>
       {% for location in user.locations_this_user_likes %}
           <div class="location">
               <a href="{{url_for('dashboard')}}">
               {{location['address']}}</a><br>
-              <a href="{{url_for('locations:remove_like', location_id=location.id)}}" class='button'>Unlike</a>
+              <a href="{{url_for('locations:remove_like', location_id=location.id)}}" class='button'>Remove Favorite</a>
           </div>
       {% endfor %}
   </div>
