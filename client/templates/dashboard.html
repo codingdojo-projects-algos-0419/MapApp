@@ -11,25 +11,35 @@
                     <a href="{{url_for('users:logout')}}">Logout</a>
                 </p>
             </div><br>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flashes">
+                        {% for message in messages %}
+                            <li class="error">{{ message }}</li>
+                        {% endfor %}
+                     </ul>
+                {% endif %}
+            {% endwith %}
         </div>
         {% else %}
             <div class='header'>
                 <h2>Welcome To Mapapp!</h2>
                 <div class="header_right">
                     <a href="{{url_for('users:login_and_registration')}}">Login or make a new account</a>
-                </div><br>      
+                </div><br>  
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul class="flashes">
+                            {% for message in messages %}
+                                <li class="error">{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}    
             </div>
     {% endif %}
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul class="flashes">
-            {% for message in messages %}
-                <li class="error">{{ message }}</li>
-            {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
     <div id="map"></div>
+    
 </div>
 {% if destination %}
     <input id="hidden" type="hidden" name="hidden" value="{{destination}}">
